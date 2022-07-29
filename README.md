@@ -4,4 +4,5 @@ In programming and software development, fuzzing or fuzz testing is an automated
 This script is written in python2 and generate random data to send to the server. The last packet sent to the server will be saved.
 # What you need
 =python2
+
 =scapy
