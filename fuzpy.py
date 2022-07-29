@@ -1,6 +1,3 @@
-# Description: This a yet simple fuzzer that makes use of SCAPY to create random stuff and
-# send/receive fuzz packets over TCP.
-
 from scapy.all import *
 import binascii
 import socket
@@ -79,30 +76,16 @@ def fuzz_connect(target,port):
         print "Sorry, something went wrong!"
 
 def howtouse():
-    print "Usage: fuzpy.py [OPTION] Hostname Port Payload"
-    print "[*] Mandatory arguments:"
-    print "[-] Specify a hostname and a target"
-    print "[-] Choose server or client depends on your application"
-
-    print "[*] Optional arguments:"
-    print "[-] Use a custom payload if you want to append something!"
-    print ""
-    print "[*] Version 1.0? Oooops haha. Not really."
-    print "[*] Snap! Something went wrong.."
-    print "[*] How to use: \"python FuzzerTCP.py server/client ipaddress port\""
+    print "Usage: fuzpy.py  Hostname Port Payload"
     sys.exit(-1)
 
 if __name__ == "__main__":
     try:
         # Set target
-        type = sys.argv[1]
-        target = sys.argv[2]
-        port = int(sys.argv[3])
+        target = sys.argv[1]
+        port = int(sys.argv[2])
 
-        print "[*] Fuzzer + Scapy by Juan Sacco "
-        print "[*] Red Team KPN <juan.sacco@kpn.com> "
-        if type == "client":
-            fuzz_connect(target, port)
+        fuzz_connect(target, port)
         fuzz_replier(target, port)
     except IndexError:
         howtouse()
